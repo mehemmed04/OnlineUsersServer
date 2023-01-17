@@ -1,0 +1,42 @@
+﻿<Window x:Class="OnlineUsersServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnlineUsersServer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Button FontSize="22"
+                Width="150"
+                Name="ConnectBtn"
+                Command="{Binding ConnectCommand}">Connect</Button>
+
+        <TextBlock>
+            Users:
+        </TextBlock>
+        
+        <ListView
+            ItemsSource="{Binding Users,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            
+        </ListView>
+
+        <TextBlock Text="Messages : "></TextBlock>
+        
+        <ListView
+            ItemsSource="{Binding Messages,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="20" Text="{Binding Owner}"></TextBlock>
+                        <TextBlock FontSize="20" Text=" : "></TextBlock>
+                        <TextBlock FontSize="20" Text="{Binding Message}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+        
+    </StackPanel>
+</Window>
